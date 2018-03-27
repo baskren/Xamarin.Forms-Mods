@@ -8,8 +8,6 @@
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Xamarin.Forms.Core\Xamarin.Forms.Core.csproj">
-      <Project>{57B8B73D-C3B5-4C42-869E-7B2F17D354AC}</Project>
-      <Name>Xamarin.Forms.Core</Name>
     </ProjectReference>
   </ItemGroup>
 </Project>
