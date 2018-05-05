@@ -15,12 +15,13 @@ namespace Xamarin.Forms
         public static VisualElement CurrentlyFocused
         {
             get => _currentlyFocused;
-            set
+            private set
             {
+				System.Diagnostics.Debug.WriteLine("Xamarin.Forms.VisualElement.CurrentlyFocused = ["+value+"]   was:["+_currentlyFocused+"]");
                 if (_currentlyFocused != value)
                 {
                     var wasFocused = _currentlyFocused;
-                    _currentlyFocused = value;
+					_currentlyFocused = value;
                     FocusChanged?.Invoke(wasFocused, _currentlyFocused);
                 }
             }
