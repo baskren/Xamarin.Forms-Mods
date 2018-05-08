@@ -94,6 +94,9 @@
       <HintPath>..\packages\Xamarin.Android.Support.Vector.Drawable.23.3.0\lib\MonoAndroid403\Xamarin.Android.Support.Vector.Drawable.dll</HintPath>
       <Private>True</Private>
     </Reference>
+    <Reference Include="FormsViewGroup">
+      <HintPath>..\Xamarin.Forms.Platform.Android.FormsViewGroup\bin\Debug\FormsViewGroup.dll</HintPath>
+    </Reference>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="..\Xamarin.Forms.Core\Properties\GlobalAssemblyInfo.cs">
