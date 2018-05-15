@@ -7,6 +7,41 @@ namespace Xamarin.Forms
 {
 	public partial class VisualElement : Element, IAnimatable, IVisualElementController, IResourcesProvider, IFlowDirectionController
 	{
+		#region Forms9Patch enhancement
+		public static event EventHandler<VisualElement> FocusChanged;
+
+		static VisualElement _currentlyFocused;
+		public static VisualElement CurrentlyFocused
+		{
+			get => _currentlyFocused;
+			private set
+			{
+				if (_currentlyFocused != value)
+				{
+					var wasFocused = _currentlyFocused;
+					_currentlyFocused = value;
+					FocusChanged?.Invoke(wasFocused, _currentlyFocused);
+				}
+			}
+		}
+
+		protected override void OnPropertyChanged([System.Runtime.CompilerServices.CallerMemberName] string propertyName = null)
+		{
+			base.OnPropertyChanged(propertyName);
+			if (propertyName == IsFocusedProperty.PropertyName)
+			{
+				if (IsFocused)
+					CurrentlyFocused = this;
+				else if (CurrentlyFocused == this)
+					CurrentlyFocused = null;
+			}
+		}
+		#endregion
+
+
+
+
+
 		internal static readonly BindablePropertyKey NavigationPropertyKey = BindableProperty.CreateReadOnly("Navigation", typeof(INavigation), typeof(VisualElement), default(INavigation));
 
 		public static readonly BindableProperty NavigationProperty = NavigationPropertyKey.BindableProperty;
